@@ -17,7 +17,7 @@ transporter.verify()
 )
 
 
-export async function sendMail(to,subject,html, text){
+export async function sendMail({to,subject,html, text}){
     const mailOption={
         from:process.env.GOOGLE_USER,
         to,

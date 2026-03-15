@@ -16,9 +16,11 @@ const authSchema = new mongoose.Schema({
         select:false
     },
     verified:{
-        type:String,
+        type:Boolean,
         default:false
     }
+},{
+    timestamps:true
 })
 
 const userModel = mongoose.model('users',authSchema)
