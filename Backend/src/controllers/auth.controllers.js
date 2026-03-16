@@ -28,7 +28,8 @@ export async function register(req,res){
     })
 
     const emailVerificationToken = jwt.sign({
-        email:user.email
+        email:user.email,
+        _id:user._id
     },process.env.JWT_SECRET_KEY)
 
     await sendMail({
@@ -108,7 +109,8 @@ export async function login(req,res){
     }
 
     const token  = jwt.sign({
-        email:user.email
+        email:user.email,
+        _id:user._id
     },process.env.JWT_SECRET_KEY)
 
      res.cookie('token',token)
