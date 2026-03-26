@@ -28,7 +28,7 @@ export async function createFolder(req,res){
 }
 
 export async function addContent(req,res){
-    const {folderId,type,title,url,tags} = req.body
+    const {folderId,type,title,url,tags,description } = req.body
     const user = req.user
 
     const isFolderExist = await userFolderModel.findOne({
@@ -47,8 +47,9 @@ export async function addContent(req,res){
         folderId:folderId,
         type:type,
         title:title,
-        url:url,
-        tags:tags
+        url:url || null,
+        tags:tags || [],
+        description:description || null
     })
 
     res.status(201).json({
